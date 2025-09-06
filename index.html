@@ -4,71 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Space Maps - Sistema de Localização Indoor</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f7fa;
-      margin: 0;
-      padding: 0;
-      color: #333;
-    }
-    header {
-      background-color: #004aad;
-      color: white;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px; /* Espaço entre a logo e o texto */
-    }
-    header img {
-      height: 300px; /* Altura da logo */
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    main {
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    section {
-      margin-bottom: 30px;
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #004aad;
-      margin-bottom: 15px;
-    }
-    ul, ol {
-      margin-left: 20px;
-    }
-    footer {
-      background-color: #004aad;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      margin-top: 20px;
-    }
-  </style>
+  <meta name="description" content="Space Maps - Sistema de Localização Indoor para Pessoas Cegas ou com Baixa Visão">
+  <meta name="author" content="Equipe Space Maps">
+  <meta name="keywords" content="localização indoor, acessibilidade, pessoas cegas, baixa visão, tecnologia assistiva">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Logo Space Maps">
+    <img src="logo.png" alt="Logo do projeto Space Maps">
     <div>
       <h1>Space Maps</h1>
       <p>Sistema de Localização Indoor para Pessoas Cegas ou com Baixa Visão</p>
     </div>
   </header>
 
+  <nav>
+    <ul>
+      <li><a href="#sobre">Sobre o Projeto</a></li>
+      <li><a href="#equipe">Equipe</a></li>
+      <li><a href="#artefatos">Artefatos SCRUM</a></li>
+      <li><a href="#backlog">Product Backlog</a></li>
+      <li><a href="#sprint">Sprint Backlog</a></li>
+    </ul>
+  </nav>
+
   <main>
     <!-- Sobre o Projeto -->
-    <section>
-      <h2>Sobre o Projeto</h2>
+    <section id="sobre">
+      <header>
+        <h2>Sobre o Projeto</h2>
+      </header>
       <p>
         A criação de um sistema de localização indoor para pessoas cegas e com baixa visão é essencial para garantir
         autonomia, segurança e inclusão em ambientes internos.
@@ -93,10 +58,11 @@
     </section>
 
     <!-- Equipe -->
-    <section>
-      <h2>Equipe</h2>
+    <section id="equipe">
+      <header>
+        <h2>Equipe</h2>
+      </header>
       <ul>
-        <li>Messias de Sousa Ribeiro</li>
         <li>Michael Douglas Figueiroa dos Santos</li>
         <li>Pedro Silva Carvalho</li>
         <li>Thadio Robledo Queiroz Oliveira</li>
@@ -107,8 +73,10 @@
     </section>
 
     <!-- Artefatos SCRUM -->
-    <section>
-      <h2>Artefatos SCRUM</h2>
+    <section id="artefatos">
+      <header>
+        <h2>Artefatos SCRUM</h2>
+      </header>
       <ul>
         <li>
           <strong>Product Backlog:</strong> Lista priorizada de funcionalidades.  
@@ -130,8 +98,10 @@
     </section>
 
     <!-- Product Backlog -->
-    <section>
-      <h2>Product Backlog - Space Maps</h2>
+    <section id="backlog">
+      <header>
+        <h2>Product Backlog - Space Maps</h2>
+      </header>
       <ol>
         <li>Como pessoa com deficiência visual, quero receber instruções de áudio em tempo real para me locomover com segurança.</li>
         <li>Como usuário, quero que o sistema reconheça obstáculos para evitar colisões.</li>
@@ -143,8 +113,10 @@
     </section>
 
     <!-- Sprint Backlog -->
-    <section>
-      <h2>Sprint Backlog - Space Maps</h2>
+    <section id="sprint">
+      <header>
+        <h2>Sprint Backlog - Space Maps</h2>
+      </header>
       <ul>
         <li>Configurar módulo ESP32 e realizar testes de conectividade com a câmera.</li>
         <li>Implementar algoritmo de detecção de obstáculos usando IA.</li>
@@ -155,30 +127,14 @@
         <li>Criar protótipo inicial e realizar testes em ambiente controlado.</li>
       </ul>
     </section>
-
-    <!-- Sprint Review -->
-    <section>
-      <h2>Sprint Review</h2>
-      <p>
-        Durante a Sprint Review, a equipe apresentou o protótipo dos óculos inteligentes com comandos de áudio básicos.
-        Foi demonstrado o reconhecimento de obstáculos simples em ambiente controlado. O feedback recebido reforçou a
-        necessidade de ampliar a base de objetos reconhecíveis e otimizar o tempo de resposta da IA.
-      </p>
-    </section>
-
-    <!-- Sprint Retrospective -->
-    <section>
-      <h2>Sprint Retrospective</h2>
-      <p>
-        A equipe concluiu que a comunicação interna funcionou bem e os papéis estavam claros.  
-        Como melhoria, ficou definido que será necessário dedicar mais tempo para testes integrados entre hardware e software.  
-        Também foi sugerido o uso de ferramentas de gestão ágil para melhorar a visibilidade do progresso.
-      </p>
-    </section>
   </main>
 
   <footer>
     <p>Projeto Space Maps © 2025 - Equipe SCRUM</p>
+    <p>
+      <a href="mailto:contato@spacemaps.com">Contato</a> | 
+      <a href="https://github.com/spacemapslocal/spacemaps" target="_blank">GitHub</a>
+    </p>
   </footer>
 </body>
 </html>
