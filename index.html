@@ -11,10 +11,12 @@
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Logo do projeto Space Maps">
-    <div>
-      <h1>Space Maps</h1>
-      <p>Sistema de Localização Indoor para Pessoas Cegas ou com Baixa Visão</p>
+    <div class="header-content">
+      <img src="logo.png" alt="Logo do projeto Space Maps">
+      <div class="header-text">
+        <h1>Space Maps</h1>
+        <p class="subtitle">Sistema de Localização para pessoas com deficiência visual</p>
+      </div>
     </div>
   </header>
 
@@ -25,6 +27,7 @@
       <li><a href="#artefatos">Artefatos SCRUM</a></li>
       <li><a href="#backlog">Product Backlog</a></li>
       <li><a href="#sprint">Sprint Backlog</a></li>
+      <li><a href="contato.html">Contato</a></li>
     </ul>
   </nav>
 
@@ -60,16 +63,34 @@
     <!-- Equipe -->
     <section id="equipe">
       <header>
-        <h2>Equipe</h2>
+        <h2>Nossa Equipe</h2>
       </header>
-      <ul>
-        <li>Michael Douglas Figueiroa dos Santos</li>
-        <li>Pedro Silva Carvalho</li>
-        <li>Thadio Robledo Queiroz Oliveira</li>
-        <li>Thiago Roberto Soares Martins</li>
-        <li>Tiago Damiao dos Santos</li>
-        <li>Suel Marques Albuquerque</li>
-      </ul>
+      <div class="team-grid">
+        <div class="team-member">
+          <h3>Michael Douglas Figueiroa dos Santos</h3>
+          <p class="role">Desenvolvedor</p>
+        </div>
+        <div class="team-member">
+          <h3>Pedro Silva Carvalho</h3>
+          <p class="role">Desenvolvedor</p>
+        </div>
+        <div class="team-member">
+          <h3>Thadio Robledo Queiroz Oliveira</h3>
+          <p class="role">Desenvolvedor</p>
+        </div>
+        <div class="team-member">
+          <h3>Thiago Roberto Soares Martins</h3>
+          <p class="role">Desenvolvedor</p>
+        </div>
+        <div class="team-member">
+          <h3>Tiago Damião dos Santos</h3>
+          <p class="role">Desenvolvedor</p>
+        </div>
+        <div class="team-member">
+          <h3>Suel Marques Albuquerque</h3>
+          <p class="role">Saruê Raivoso</p>
+        </div>
+      </div>
     </section>
 
     <!-- Artefatos SCRUM -->
@@ -77,24 +98,36 @@
       <header>
         <h2>Artefatos SCRUM</h2>
       </header>
-      <ul>
-        <li>
-          <strong>Product Backlog:</strong> Lista priorizada de funcionalidades.  
-          Exemplo: "Como pessoa com deficiência visual, quero receber instruções de áudio em tempo real."
-        </li>
-        <li>
-          <strong>Sprint Backlog:</strong> Tarefas selecionadas para a sprint.  
-          Exemplo: "Configurar câmera dos óculos" e "Integrar ESP32 com IA".
-        </li>
-        <li>
-          <strong>Sprint Review:</strong> Demonstração das entregas ao final da sprint.  
-          Exemplo: Protótipo inicial dos óculos com comandos de áudio em ambiente de teste.
-        </li>
-        <li>
-          <strong>Sprint Retrospective:</strong> Reflexão sobre o processo e melhorias.  
-          Exemplo: "A integração hardware/software precisa ser otimizada".
-        </li>
-      </ul>
+      <div class="artifacts-grid">
+        <div class="artifact-item">
+          <h3>Product Backlog</h3>
+          <p>Uma lista priorizada de funcionalidades, requisitos e melhorias para o produto.</p>
+          <div class="example">
+            <strong>Exemplo:</strong> "Como pessoa com deficiência visual, quero receber instruções de áudio em tempo real para me locomover com segurança."
+          </div>
+        </div>
+        <div class="artifact-item">
+          <h3>Sprint Backlog</h3>
+          <p>Um conjunto de itens do Product Backlog selecionados para uma sprint, com o plano para entregá-los.</p>
+          <div class="example">
+            <strong>Exemplo:</strong> "Configurar o módulo ESP32 com a câmera dos óculos" e "Implementar o algoritmo de detecção de obstáculos usando IA."
+          </div>
+        </div>
+        <div class="artifact-item">
+          <h3>Sprint Review</h3>
+          <p>Um evento no final da sprint para inspecionar a entrega e adaptar o Product Backlog, se necessário.</p>
+          <div class="example">
+            <strong>Exemplo:</strong> "Demonstração do protótipo inicial dos óculos com reconhecimento de obstáculos básicos em um ambiente de teste."
+          </div>
+        </div>
+        <div class="artifact-item">
+          <h3>Sprint Retrospective</h3>
+          <p>Uma reunião da equipe para inspecionar como a sprint funcionou e planejar melhorias para a próxima.</p>
+          <div class="example">
+            <strong>Exemplo:</strong> "A equipe discutiu a necessidade de otimizar a integração entre o hardware e o software e de dedicar mais tempo a testes."
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Product Backlog -->
@@ -102,14 +135,16 @@
       <header>
         <h2>Product Backlog - Space Maps</h2>
       </header>
-      <ol>
-        <li>Como pessoa com deficiência visual, quero receber instruções de áudio em tempo real para me locomover com segurança.</li>
-        <li>Como usuário, quero que o sistema reconheça obstáculos para evitar colisões.</li>
-        <li>Como pessoa com baixa visão, quero visualizar contrastes e ícones ampliados.</li>
-        <li>Como usuário, quero conectar os óculos ao celular via Bluetooth para personalização.</li>
-        <li>Como administrador, quero registrar diferentes mapas de ambientes internos.</li>
-        <li>Como pessoa com deficiência visual, quero que o sistema funcione offline.</li>
-      </ol>
+      <div class="backlog-list">
+        <ol>
+          <li>Como pessoa com deficiência visual, quero receber instruções de áudio em tempo real para me locomover com segurança.</li>
+          <li>Como usuário, quero que o sistema reconheça obstáculos para evitar colisões.</li>
+          <li>Como pessoa com baixa visão, quero visualizar contrastes e ícones ampliados.</li>
+          <li>Como usuário, quero conectar os óculos ao celular via Bluetooth para personalização.</li>
+          <li>Como administrador, quero registrar diferentes mapas de ambientes internos.</li>
+          <li>Como pessoa com deficiência visual, quero que o sistema funcione offline.</li>
+        </ol>
+      </div>
     </section>
 
     <!-- Sprint Backlog -->
@@ -117,15 +152,17 @@
       <header>
         <h2>Sprint Backlog - Space Maps</h2>
       </header>
-      <ul>
-        <li>Configurar módulo ESP32 e realizar testes de conectividade com a câmera.</li>
-        <li>Implementar algoritmo de detecção de obstáculos usando IA.</li>
-        <li>Desenvolver sistema de saída de áudio para fornecer instruções ao usuário.</li>
-        <li>Criar interface com alto contraste para usuários com baixa visão.</li>
-        <li>Programar integração do ESP32 com celular via Bluetooth.</li>
-        <li>Implementar sistema de armazenamento offline para funcionamento sem internet.</li>
-        <li>Criar protótipo inicial e realizar testes em ambiente controlado.</li>
-      </ul>
+      <div class="sprint-list">
+        <ul>
+          <li>Configurar módulo ESP32 e realizar testes de conectividade com a câmera.</li>
+          <li>Implementar algoritmo de detecção de obstáculos usando IA.</li>
+          <li>Desenvolver sistema de saída de áudio para fornecer instruções ao usuário.</li>
+          <li>Criar interface com alto contraste para usuários com baixa visão.</li>
+          <li>Programar integração do ESP32 com celular via Bluetooth.</li>
+          <li>Implementar sistema de armazenamento offline para funcionamento sem internet.</li>
+          <li>Criar protótipo inicial e realizar testes em ambiente controlado.</li>
+        </ul>
+      </div>
     </section>
   </main>
 
