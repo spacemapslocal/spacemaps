@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Maps - Sistema de Localização Indoor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background-color: #004aad;
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px; /* Espaço entre a logo e o texto */
+    }
+    header img {
+      height: 300px; /* Altura da logo */
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 30px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #004aad;
+      margin-bottom: 15px;
+    }
+    ul, ol {
+      margin-left: 20px;
+    }
+    footer {
+      background-color: #004aad;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo Space Maps">
+    <div>
+      <h1>Space Maps</h1>
+      <p>Sistema de Localização Indoor para Pessoas Cegas ou com Baixa Visão</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Sobre o Projeto -->
+    <section>
+      <h2>Sobre o Projeto</h2>
+      <p>
+        A criação de um sistema de localização indoor para pessoas cegas e com baixa visão é essencial para garantir
+        autonomia, segurança e inclusão em ambientes internos.
+      </p>
+      <p>
+        O sistema consiste em óculos inteligentes equipados com uma câmera conectada a um módulo ESP32, integrado a uma
+        Inteligência Artificial especializada em reconhecimento de objetos e navegação espacial. A IA analisa o ambiente
+        em tempo real e fornece instruções claras ao usuário por meio de comandos de áudio.
+      </p>
+      <p>
+        Com este dispositivo, pessoas cegas ou com baixa visão ganham independência para explorar espaços internos,
+        reforçando o compromisso com a acessibilidade e a inclusão social.
+      </p>
+      <h3>Principais Características:</h3>
+      <ul>
+        <li><strong>Óculos com câmera:</strong> captura imagens do ambiente para análise em tempo real.</li>
+        <li><strong>Processamento com ESP32:</strong> garante eficiência e conectividade com a IA.</li>
+        <li><strong>Inteligência Artificial:</strong> reconhece objetos e mapeia o espaço.</li>
+        <li><strong>Feedback via áudio:</strong> fornece instruções claras e acessíveis ao usuário.</li>
+        <li><strong>Foco na acessibilidade:</strong> projetado para atender às necessidades específicas.</li>
+      </ul>
+    </section>
+
+    <!-- Equipe -->
+    <section>
+      <h2>Equipe</h2>
+      <ul>
+        <li>Messias de Sousa Ribeiro</li>
+        <li>Michael Douglas Figueiroa dos Santos</li>
+        <li>Pedro Silva Carvalho</li>
+        <li>Thadio Robledo Queiroz Oliveira</li>
+        <li>Thiago Roberto Soares Martins</li>
+        <li>Tiago Damiao dos Santos</li>
+        <li>Suel Marques Albuquerque</li>
+      </ul>
+    </section>
+
+    <!-- Artefatos SCRUM -->
+    <section>
+      <h2>Artefatos SCRUM</h2>
+      <ul>
+        <li>
+          <strong>Product Backlog:</strong> Lista priorizada de funcionalidades.  
+          Exemplo: "Como pessoa com deficiência visual, quero receber instruções de áudio em tempo real."
+        </li>
+        <li>
+          <strong>Sprint Backlog:</strong> Tarefas selecionadas para a sprint.  
+          Exemplo: "Configurar câmera dos óculos" e "Integrar ESP32 com IA".
+        </li>
+        <li>
+          <strong>Sprint Review:</strong> Demonstração das entregas ao final da sprint.  
+          Exemplo: Protótipo inicial dos óculos com comandos de áudio em ambiente de teste.
+        </li>
+        <li>
+          <strong>Sprint Retrospective:</strong> Reflexão sobre o processo e melhorias.  
+          Exemplo: "A integração hardware/software precisa ser otimizada".
+        </li>
+      </ul>
+    </section>
+
+    <!-- Product Backlog -->
+    <section>
+      <h2>Product Backlog - Space Maps</h2>
+      <ol>
+        <li>Como pessoa com deficiência visual, quero receber instruções de áudio em tempo real para me locomover com segurança.</li>
+        <li>Como usuário, quero que o sistema reconheça obstáculos para evitar colisões.</li>
+        <li>Como pessoa com baixa visão, quero visualizar contrastes e ícones ampliados.</li>
+        <li>Como usuário, quero conectar os óculos ao celular via Bluetooth para personalização.</li>
+        <li>Como administrador, quero registrar diferentes mapas de ambientes internos.</li>
+        <li>Como pessoa com deficiência visual, quero que o sistema funcione offline.</li>
+      </ol>
+    </section>
+
+    <!-- Sprint Backlog -->
+    <section>
+      <h2>Sprint Backlog - Space Maps</h2>
+      <ul>
+        <li>Configurar módulo ESP32 e realizar testes de conectividade com a câmera.</li>
+        <li>Implementar algoritmo de detecção de obstáculos usando IA.</li>
+        <li>Desenvolver sistema de saída de áudio para fornecer instruções ao usuário.</li>
+        <li>Criar interface com alto contraste para usuários com baixa visão.</li>
+        <li>Programar integração do ESP32 com celular via Bluetooth.</li>
+        <li>Implementar sistema de armazenamento offline para funcionamento sem internet.</li>
+        <li>Criar protótipo inicial e realizar testes em ambiente controlado.</li>
+      </ul>
+    </section>
+
+    <!-- Sprint Review -->
+    <section>
+      <h2>Sprint Review</h2>
+      <p>
+        Durante a Sprint Review, a equipe apresentou o protótipo dos óculos inteligentes com comandos de áudio básicos.
+        Foi demonstrado o reconhecimento de obstáculos simples em ambiente controlado. O feedback recebido reforçou a
+        necessidade de ampliar a base de objetos reconhecíveis e otimizar o tempo de resposta da IA.
+      </p>
+    </section>
+
+    <!-- Sprint Retrospective -->
+    <section>
+      <h2>Sprint Retrospective</h2>
+      <p>
+        A equipe concluiu que a comunicação interna funcionou bem e os papéis estavam claros.  
+        Como melhoria, ficou definido que será necessário dedicar mais tempo para testes integrados entre hardware e software.  
+        Também foi sugerido o uso de ferramentas de gestão ágil para melhorar a visibilidade do progresso.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Projeto Space Maps © 2025 - Equipe SCRUM</p>
+  </footer>
+</body>
+</html>
