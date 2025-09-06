@@ -1,2 +1,2 @@
-# spacemaps
-Sistema de localização indoor
+# SpaceMaps
+Sistema de localização.
