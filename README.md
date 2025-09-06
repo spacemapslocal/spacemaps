@@ -65,7 +65,7 @@ spacemaps/
 
 | Nome | Função | E-mail |
 |------|--------|--------|
-| **Michael Douglas Figueirôa dos Santos** | Desenvolvedor | michael_doulasfs@hotmail.com |
+| **Michael Douglas Figueirôa dos Santos** | Desenvolvedor | michael_douglasfs@hotmail.com |
 | **Pedro Silva Carvalho** | Desenvolvedor | pedro.carvalho@email.com |
 | **Thadio Robledo Queiroz Oliveira** | Desenvolvedor | thadio.oliveira@email.com |
 | **Thiago Roberto Soares Martins** | Desenvolvedor | thiago.martins@email.com |
