@@ -68,8 +68,8 @@ spacemaps/
 | **Michael Douglas Figueirôa dos Santos** | Desenvolvedor | michael_douglasfs@hotmail.com |
 | **Pedro Silva Carvalho** | Desenvolvedor | pedro.carvalho@email.com |
 | **Thadio Robledo Queiroz Oliveira** | Desenvolvedor | thadio.oliveira@email.com |
-| **Thiago Roberto Soares Martins** | Desenvolvedor | thiago.martins@email.com |
-| **Tiago Damião dos Santos** | Desenvolvedor | tiago.santos@email.com |
+| **Thiago Roberto Soares Martins** | Desenvolvedor | gestaothg2.0@gmail.com |
+| **Tiago Damião dos Santos** | Desenvolvedor | tiagodf4@gmail.com |
 | **Suel Marques Albuquerque** | Desenvolvedor | Suel138612@gmail.com |
 
 ## 🏃‍♂️ Metodologia SCRUM
@@ -148,7 +148,7 @@ npx serve .
 
 ## 📞 Contato
 
-- **E-mail Geral**: contato@spacemaps.com
+- **E-mail Geral**: spacemaps2025@gmail.com
 - **GitHub**: [spacemapslocal/spacemaps](https://github.com/spacemapslocal/spacemaps)
 - **Website**: [Página do Projeto](https://spacemapslocal.github.io/spacemaps)
 
@@ -165,7 +165,7 @@ Este projeto é desenvolvido como parte de um trabalho acadêmico sobre metodolo
 ---
 
 <div align="center">
-  <p><strong>Space Maps © 2025 - Equipe SCRUM</strong></p>
+  <p><strong>Space Maps © 2025 - Equipe 3A Senac</strong></p>
   <p>Sistema de Localização para pessoas com deficiência visual</p>
   
   [![GitHub](https://img.shields.io/badge/GitHub-spacemapslocal-blue?style=flat-square&logo=github)](https://github.com/spacemapslocal/spacemaps)
