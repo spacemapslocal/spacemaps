@@ -130,6 +130,64 @@ h2::after {
   box-shadow: 0 2px 8px rgba(100, 181, 246, 0.4);
 }
 
+h4 {
+  color: #64b5f6;
+  margin-bottom: 20px;
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+h4::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(135deg, #64b5f6, #42a5f5);
+  margin: 10px auto;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(100, 181, 246, 0.4);
+}
+  h5 {
+    color: #64b5f6;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  h5::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(135deg, #64b5f6, #42a5f5);
+    margin: 10px auto;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(100, 181, 246, 0.4);
+}
+h6 {
+  color: #64b5f6;
+  margin-bottom: 20px;
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+h6::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(135deg, #64b5f6, #42a5f5);
+  margin: 10px auto;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(100, 181, 246, 0.4);
+}
+
 /* Estilos para a grade da equipe */
 .team-grid {
   display: grid;
@@ -427,6 +485,21 @@ footer a {
 }
 
 h3 {
+  color: #42a5f5;
+  font-weight: 600;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+h4 {
+  color: #42a5f5;
+  font-weight: 600;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+h5 {
   color: #42a5f5;
   font-weight: 600;
   margin-top: 25px;
