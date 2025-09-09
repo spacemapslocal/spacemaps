@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpaceMaps — Project Canvas</title>
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#121923;
+      --muted:#9fb0c3;
+      --ink:#e9f1fb;
+      --brand:#6ad3ff;
+      --brand-2:#8bffb2;
+      --warn:#ffd166;
+      --danger:#ff6b6b;
+      --ok:#6ee7a3;
+      --accent:#c8b6ff;
+      --grid-gap:18px;
+      --radius:16px;
+      --shadow:0 8px 24px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:radial-gradient(1200px 800px at 10% -10%, #132032 0%, var(--bg) 55%);
+      color:var(--ink); font:500 16px/1.55 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+      letter-spacing:.2px;
+    }
+    .wrap{max-width:1200px; margin:40px auto; padding:0 20px 80px}
+    header{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:26px;
+    }
+    .title{
+      display:flex; align-items:center; gap:14px
+    }
+    .logo{
+      width:48px; height:48px; border-radius:12px; background:linear-gradient(135deg,var(--brand),var(--accent));
+      display:grid; place-items:center; color:#0b0f14; font-weight:900; box-shadow:var(--shadow);
+    }
+    h1{margin:0; font-size:28px; letter-spacing:.3px}
+    .meta{color:var(--muted); font-size:13px}
+
+    .grid{
+      display:grid; grid-template-columns:repeat(12,1fr); gap:var(--grid-gap);
+    }
+    .card{background:linear-gradient(180deg, #141f2c 0%, var(--card) 100%);
+      border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:18px 18px 16px; box-shadow:var(--shadow);
+      position:relative; overflow:hidden;
+    }
+    .card:before{
+      content:""; position:absolute; inset:auto -40% auto auto; top:-60%; width:260px; height:260px; border-radius:50%;
+      background:radial-gradient(closest-side,rgba(106,211,255,.15),transparent 70%);
+      pointer-events:none; filter:blur(2px);
+    }
+    .card h3{margin:0 0 10px; font-size:16px; letter-spacing:.4px}
+    .card p,.card li{color:#dce7f7}
+    .pill{display:inline-flex; align-items:center; gap:8px; font-size:12px; color:#0b0f14; font-weight:700; padding:6px 10px; border-radius:999px}
+    .pill.ok{background:var(--ok)}
+    .pill.warn{background:var(--warn)}
+    .pill.danger{background:var(--danger)}
+    .list{padding-left:18px; margin:8px 0}
+
+    /* Sizing rules for each canvas block */
+    .c-just{grid-column:span 4}
+    .c-prod{grid-column:span 4}
+    .c-require{grid-column:span 4}
+
+    .c-stake{grid-column:span 3}
+    .c-team{grid-column:span 3}
+    .c-prem{grid-column:span 3}
+    .c-risk{grid-column:span 3}
+
+    .c-deliver{grid-column:span 6}
+    .c-road{grid-column:span 6}
+
+    .c-costs{grid-column:span 5}
+    .c-metrics{grid-column:span 4}
+    .c-revenue{grid-column:span 3}
+
+    /* Timeline styling */
+    .timeline{position:relative; padding-left:18px; margin-top:6px}
+    .timeline:before{content:""; position:absolute; left:6px; top:4px; bottom:6px; width:2px; background:linear-gradient(180deg,var(--brand),transparent)}
+    .t-item{margin:10px 0 10px 6px}
+    .t-item strong{display:inline-block; width:56px; color:var(--brand-2)}
+
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 2px}
+    .chip{font-size:12px; color:#0b0f14; background:var(--brand); padding:6px 10px; border-radius:999px; font-weight:700}
+    .chip.alt{background:var(--accent)}
+
+    .costs{width:100%; border-collapse:collapse; margin-top:8px}
+    .costs th,.costs td{padding:10px 8px; border-bottom:1px dashed rgba(255,255,255,.08); text-align:left}
+    .costs th{color:var(--muted); font-weight:700; font-size:12px; letter-spacing:.3px}
+    .costs tfoot td{font-weight:900; border-top:1px solid rgba(255,255,255,.12)}
+
+    .note{color:var(--muted); font-size:12px}
+
+    @media (max-width:1100px){
+      .c-just,.c-prod,.c-require,.c-stake,.c-team,.c-prem,.c-risk,.c-deliver,.c-road,.c-costs,.c-metrics,.c-revenue{grid-column:span 12}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <div class="logo">S</div>
+        <div>
+          <h1>SpaceMaps — Project Canvas</h1>
+          <div class="meta">Versão evoluída do canvas com foco em escalabilidade, impacto e governança</div>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip">Acessibilidade</span>
+        <span class="chip alt">Indoor Navigation</span>
+        <span class="chip">IA &amp; Visão Computacional</span>
+        <span class="chip alt">SaaS + Dispositivo</span>
+      </div>
+    </header>
+
+    <section class="grid">
+      <!-- Justificativa -->
+      <article class="card c-just">
+        <h3>Justificativa (problema)</h3>
+        <ul class="list">
+          <li><strong>6,5M+</strong> de brasileiros com deficiência visual; baixa oferta de navegação indoor acessível.</li>
+          <li>Ambientes críticos: hospitais, universidades, órgãos públicos, metrôs, shoppings e aeroportos.</li>
+          <li>Impacto: autonomia do usuário, inclusão social, redução de dependência e melhor experiência de deslocamento.</li>
+          <li>Mercado B2B2C com potencial de parcerias e contratos com prefeituras e operadores privados.</li>
+        </ul>
+      </article>
+
+      <!-- Produto -->
+      <article class="card c-prod">
+        <h3>Produto (proposta de valor)</h3>
+        <ul class="list">
+          <li>Óculos inteligentes com <strong>detecção de obstáculos</strong> + <strong>mapas indoor</strong> dinâmicos.</li>
+          <li>Feedback <strong>sonoro</strong> e <strong>háptico</strong> em tempo real; comandos de voz.</li>
+          <li>Modo acompanhante para compartilhar trajeto com familiares/cuidadores.</li>
+          <li>Integração com apps e APIs de transporte/acessibilidade; SDK p/ parceiros.</li>
+        </ul>
+        <div class="chips">
+          <span class="pill ok">MVP em 3–4 meses</span>
+          <span class="pill warn">Foco em usabilidade e segurança</span>
+        </div>
+      </article>
+
+      <!-- Requisitos -->
+      <article class="card c-require">
+        <h3>Requisitos (técnicos & segurança)</h3>
+        <ul class="list">
+          <li><strong>Hardware:</strong> ESP32, câmeras estéreo, IMU; LIDAR opcional.</li>
+          <li><strong>Software/IA:</strong> Python/Node, TensorFlow/PyTorch, SLAM, navegação indoor.</li>
+          <li><strong>Cloud:</strong> AWS IoT + DynamoDB + API Gateway (ou GCP equivalentes).</li>
+          <li><strong>Segurança:</strong> Criptografia ponta a ponta; privacidade by design (LGPD).</li>
+          <li><strong>Operação:</strong> QR Codes de referência; telemetria anônima; atualizações OTA.</li>
+        </ul>
+      </article>
+
+      <!-- Stakeholders -->
+      <article class="card c-stake">
+        <h3>Stakeholders externos</h3>
+        <ul class="list">
+          <li>Usuários (pessoas com deficiência visual) &amp; famílias</li>
+          <li>ONGs/Associações (validação contínua)</li>
+          <li>Operadores de ambientes (shopping, hospital, universidade)</li>
+          <li>Reguladores: ANATEL, INMETRO; conformidades</li>
+          <li>Investidores / Aceleradoras / Editais</li>
+        </ul>
+      </article>
+
+      <!-- Equipe -->
+      <article class="card c-team">
+        <h3>Equipe (papéis e responsabilidades)</h3>
+        <ul class="list">
+          <li><strong>Gerente de Projeto</strong> — governança e roadmap</li>
+          <li><strong>Eng. Hardware</strong> — protótipos, testes, homologação</li>
+          <li><strong>Dev/IA</strong> — visão computacional, SLAM, SDK</li>
+          <li><strong>UX Acessível</strong> — pesquisa com usuários, design inclusivo</li>
+          <li><strong>Dados</strong> — telemetria, métricas e insights</li>
+          <li><strong>Parcerias &amp; Growth</strong> — editais, B2B, pilotos</li>
+        </ul>
+      </article>
+
+      <!-- Premissas -->
+      <article class="card c-prem">
+        <h3>Premissas</h3>
+        <ul class="list">
+          <li>Acesso a editais (FINEP, CNPq) e convênios públicos.</li>
+          <li>APIs e plantas indoor disponíveis com parceiros.</li>
+          <li>Aprovação ética e termos de consentimento nos testes.</li>
+          <li>Capex inicial para 50 protótipos.</li>
+        </ul>
+      </article>
+
+      <!-- Riscos -->
+      <article class="card c-risk">
+        <h3>Riscos & mitigação</h3>
+        <ul class="list">
+          <li><strong>Técnico:</strong> baixa precisão → pilotos iterativos + redundância sensorial.</li>
+          <li><strong>Legal:</strong> LGPD/privacidade → anonimização e minimização de dados.</li>
+          <li><strong>Financeiro:</strong> custo do hardware → lote piloto + parcerias.</li>
+          <li><strong>Adoção:</strong> barreiras culturais → co-design com usuários desde o MVP.</li>
+          <li><strong>Mercado:</strong> concorrência big tech → foco em indoor + parcerias locais.</li>
+        </ul>
+      </article>
+
+      <!-- Entregas -->
+      <article class="card c-deliver">
+        <h3>Grupos de entrega (entregáveis)</h3>
+        <ul class="list">
+          <li><strong>M1–M2:</strong> Arquitetura, protótipo funcional (MVP 0.1) + plano de testes.</li>
+          <li><strong>M3–M4:</strong> Testes controlados com usuários; melhorias de IA e UX.</li>
+          <li><strong>M5–M6:</strong> Piloto com parceiro (shopping/hospital); SDK para integrações.</li>
+          <li><strong>M7–M9:</strong> Beta público limitado; contrato(s) B2B; escala de produção.</li>
+        </ul>
+      </article>
+
+      <!-- Roadmap -->
+      <article class="card c-road">
+        <h3>Linha do tempo (roadmap)</h3>
+        <div class="timeline">
+          <div class="t-item"><strong>Q1</strong> Design &amp; protótipo; validação técnica; segurança by design</div>
+          <div class="t-item"><strong>Q2</strong> Testes de campo; acordos de dados; matriz de riscos</div>
+          <div class="t-item"><strong>Q3</strong> Piloto público + métricas de impacto; início de contratos</div>
+          <div class="t-item"><strong>Q4</strong> Lançamento comercial limitado; planos de expansão</div>
+        </div>
+      </article>
+
+      <!-- Custos -->
+      <article class="card c-costs">
+        <h3>Custos (12 meses)</h3>
+        <table class="costs">
+          <thead>
+            <tr><th>Categoria</th><th>Descrição</th><th>R$</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Equipe</td><td>Eng. HW, Dev/IA, UX, Dados, PM, Growth</td><td>220.000</td></tr>
+            <tr><td>Infra Cloud</td><td>AWS/GCP (IoT, DB, API, monitoramento)</td><td>30.000</td></tr>
+            <tr><td>Protótipos</td><td>50 unidades (eletrônica, lentes, impressão 3D)</td><td>40.000</td></tr>
+            <tr><td>Marketing &amp; Parcerias</td><td>Pilotos, materiais, eventos, acessibilidade</td><td>20.000</td></tr>
+            <tr><td>Reserva de Risco</td><td>Contingências e homologações</td><td>20.000</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="2">Total estimado</td><td>330.000</td></tr>
+          </tfoot>
+        </table>
+        <div class="note">Valores estimados. Ajustar conforme escopo e cronograma de captação.</div>
+      </article>
+
+      <!-- Métricas -->
+      <article class="card c-metrics">
+        <h3>Métricas de sucesso</h3>
+        <ul class="list">
+          <li><strong>Navegações concluídas</strong> por sessão &lt;=&gt; taxa de intervenção do cuidador</li>
+          <li><strong>Tempo até o destino</strong> vs. baseline sem dispositivo</li>
+          <li><strong>NPS/CSAT</strong> do usuário e do operador do ambiente</li>
+          <li><strong>Falhas de detecção</strong> por 100m (meta: &lt; 1/100m em indoor mapeado)</li>
+          <li><strong>Contratos</strong> firmados em ambientes críticos (hospitais, metrôs etc.)</li>
+        </ul>
+      </article>
+
+      <!-- Receita -->
+      <article class="card c-revenue">
+        <h3>Modelo de receita</h3>
+        <ul class="list">
+          <li><strong>SaaS B2B</strong> (licença por ambiente + suporte)</li>
+          <li><strong>Dispositivo</strong> subsidiado no piloto; compra/locação na escala</li>
+          <li><strong>Serviços</strong> de mapeamento indoor e treinamento</li>
+          <li><strong>Editais &amp; Grants</strong> para P&amp;D e inclusão</li>
+        </ul>
+      </article>
+    </section>
+  </div>
+</body>
+</html>
