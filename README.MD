@@ -18,8 +18,3 @@ O módulo de banco de dados é responsável por armazenar as **imagens capturada
 
 ---
 
-## ⚙️ Como Usar
-
-1. **Criar o banco e a tabela**
-   ```bash
-   python init_db.py
