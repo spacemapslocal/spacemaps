@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Veri • Sprint 2 — Dossiê Scrum</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #111c34;
+      --card: rgba(15, 23, 42, 0.75);
+      --accent: #06b6d4;
+      --accent-strong: #14f1ff;
+      --text: #f8fafc;
+      --text-muted: #cbd5f5;
+      --border: rgba(255, 255, 255, 0.1);
+      --success: #4ade80;
+      --warning: #facc15;
+      --danger: #f87171;
+      font-size: 16px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(circle at top, rgba(20, 184, 166, 0.12), transparent 50%), linear-gradient(180deg, #0b1120 0%, #020617 100%);
+      color: var(--text);
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(2, 6, 23, 0.75);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.05rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo span {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(20, 241, 255, 0.3));
+      color: var(--accent-strong);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      transition: background 0.3s, transform 0.3s;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      background: rgba(6, 182, 212, 0.12);
+      transform: translateY(-2px);
+      color: var(--text);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    section {
+      position: relative;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(14, 165, 233, 0.08));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      display: grid;
+      gap: 2rem;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: -10% 40% 20% -30%;
+      background: radial-gradient(circle, rgba(20, 241, 255, 0.35), transparent 60%);
+      filter: blur(40px);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.15;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 650px;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .metric {
+      background: rgba(2, 6, 23, 0.6);
+      border-radius: 18px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric::after {
+      content: "";
+      position: absolute;
+      inset: 60% -40% -50% 40%;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.25), transparent 70%);
+      opacity: 0.6;
+    }
+
+    .metric span {
+      display: inline-block;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 0.4rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 700px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: 0 18px 45px rgba(2, 6, 23, 0.4);
+      transition: transform 0.3s, border 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(20, 241, 255, 0.3);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(6, 182, 212, 0.14);
+      color: var(--accent-strong);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .timeline {
+      border-left: 2px solid rgba(255, 255, 255, 0.08);
+      margin-left: 0.5rem;
+      padding-left: 1rem;
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .timeline-item {
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.36rem;
+      top: 0.3rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      box-shadow: 0 0 12px rgba(20, 241, 255, 0.8);
+    }
+
+    .timeline-item h4 {
+      margin: 0;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .timeline-item p {
+      margin: 0.3rem 0 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 18px;
+    }
+
+    thead {
+      background: rgba(6, 182, 212, 0.12);
+    }
+
+    th, td {
+      text-align: left;
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.95rem;
+    }
+
+    tbody tr {
+      transition: background 0.2s;
+    }
+
+    tbody tr:hover {
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.55);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .filter-btn {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      padding: 0.45rem 1rem;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: rgba(6, 182, 212, 0.12);
+      color: var(--text);
+      border-color: rgba(20, 241, 255, 0.4);
+    }
+
+    .accordion {
+      display: grid;
+      gap: 1rem;
+    }
+
+    details {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 1.2rem 1.5rem;
+      transition: border 0.3s;
+    }
+
+    details[open] {
+      border-color: rgba(20, 241, 255, 0.3);
+      box-shadow: 0 18px 35px rgba(2, 6, 23, 0.4);
+    }
+
+    summary {
+      cursor: pointer;
+      font-size: 1.05rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .story-meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .story-criteria {
+      margin-top: 0.9rem;
+      padding-left: 1.2rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .kanban-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .kanban-column {
+      padding: 1.2rem;
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .kanban-column h4 {
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .kanban-items {
+      display: grid;
+      gap: 0.6rem;
+      font-size: 0.92rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem 0.6rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .badge.must { background: rgba(6, 182, 212, 0.18); color: var(--accent-strong); }
+    .badge.should { background: rgba(250, 204, 21, 0.18); color: var(--warning); }
+    .badge.could { background: rgba(148, 163, 184, 0.18); color: #a1b8e8; }
+
+    .grid-two {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .list-pill {
+      display: grid;
+      gap: 0.6rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .list-pill li {
+      list-style: none;
+      background: rgba(15, 23, 42, 0.5);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.75rem 1rem;
+    }
+
+    .chart-card {
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 2rem;
+      position: relative;
+    }
+
+    canvas {
+      width: 100%;
+      max-height: 320px;
+      border-radius: 16px;
+      background: rgba(2, 6, 23, 0.55);
+    }
+
+    .chart-legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+      color: var(--text-muted);
+    }
+
+    .legend-item {
+      display: inline-flex;
+      gap: 0.5rem;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .grid-three {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .highlight {
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2rem;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.22), rgba(14, 165, 233, 0.12));
+      border: 1px solid rgba(20, 241, 255, 0.25);
+      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.55);
+    }
+
+    .cta button {
+      border: none;
+      border-radius: 12px;
+      padding: 0.75rem 1.8rem;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      background: linear-gradient(135deg, var(--accent), rgba(20, 241, 255, 0.8));
+      color: #001220;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .cta button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 35px rgba(6, 182, 212, 0.35);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem 1.5rem;
+      color: rgba(148, 163, 184, 0.7);
+      font-size: 0.85rem;
+    }
+
+    .to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(6, 182, 212, 0.25);
+      backdrop-filter: blur(12px);
+      color: var(--text);
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 16px 30px rgba(2, 6, 23, 0.45);
+      transition: opacity 0.3s, transform 0.3s;
+      opacity: 0;
+      visibility: hidden;
+      z-index: 120;
+    }
+
+    .to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .to-top:hover {
+      transform: translateY(-4px);
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        padding: 1rem;
+        gap: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding: 2.2rem 1.5rem;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      th, td {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+      }
+
+      .cta {
+        padding: 1.2rem 1.4rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cta button {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo"><span>Veri</span>Sprint 2</div>
+      <div class="nav-links">
+        <a href="#overview">Visão Geral</a>
+        <a href="#team">Time</a>
+        <a href="#schedule">Agenda</a>
+        <a href="#backlog">Backlog</a>
+        <a href="#stories">HUs</a>
+        <a href="#kanban">Kanban</a>
+        <a href="#metrics">Métricas</a>
+        <a href="#definitions">DoD & DoR</a>
+        <a href="#next">Próximos Passos</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="overview">
+      <div>
+        <h1>Veri • Sprint 2 — Dossiê Scrum</h1>
+        <p>Incremento integrado de firmware, aplicativo Android, documentação e branding para entregar a experiência de streaming Bluetooth SPP com latência inferior a 2 segundos, controles remotos de captura e identidade “Veri”.</p>
+      </div>
+      <div class="hero-grid">
+        <div class="metric">
+          <span>Nome & Propósito</span>
+          <strong>Veri — Inteligência que enxerga com você</strong>
+          <p>Óculos inteligentes com IA que descrevem ambientes, obstáculos e objetos para ampliar a autonomia de pessoas com deficiência visual.</p>
+        </div>
+        <div class="metric">
+          <span>Meta da Sprint</span>
+          <strong>Streaming SPP otimizado</strong>
+          <p>Manter arquitetura atual com ESP32-CAM, entregar latência ≤ 2 s e permitir ajustes de ROI/frequência via app.</p>
+        </div>
+        <div class="metric">
+          <span>Incremento esperado</span>
+          <strong>Firmware + App + Branding</strong>
+          <p>Handshakes confiáveis, painel de métricas, documentação atualizada e rebranding Veri para apresentação aos stakeholders.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <h2 class="section-title">Time Scrum & Colaborações</h2>
+      <p class="section-subtitle">Trabalho multidisciplinar liderado por Thádio como Product Owner, com suporte de especialistas em firmware, mobile, branding e métricas.</p>
+      <div class="cards-grid">
+        <article class="card">
+          <span class="tag">PO</span>
+          <h3>Thádio</h3>
+          <p>Prioriza o backlog, valida incremento e mantém visão de produto alinhada aos objetivos de autonomia do usuário final.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Scrum Master</span>
+          <h3>Suel Marques Albuquerque</h3>
+          <p>Facilita cerimônias, remove impedimentos e mantém dashboards atualizados para transparência dos indicadores da sprint.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Dev Android</span>
+          <h3>Tiago Damião dos Santos</h3>
+          <p>Integra Bluetooth SPP no app Android, processa inferência offline e entrega UI responsiva para ROI e métricas.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Dev iOS</span>
+          <h3>Thiago Roberto Soares Martins</h3>
+          <p>Planeja integração BLE e adapta pipeline para Core ML, garantindo experiência equivalente no ecossistema iOS.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Branding</span>
+          <h3>Michael Douglas Figueiroa</h3>
+          <p>Valida o nome “Veri”, cria logomarca e sincroniza identidade com os materiais de apresentação e site.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Site</span>
+          <h3>Pedro Silva Carvalho</h3>
+          <p>Constrói site comercial alinhado ao novo nome e apresenta equipe, produto e diferenciais de forma envolvente.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Dashboard</span>
+          <h3>Suel Marques Albuquerque</h3>
+          <p>Entrega dashboard visual com BurnDown Chart e métricas, apoiando acompanhamento diário e Review.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Stakeholders</span>
+          <h3>Comunidade & SENAC ADS</h3>
+          <p>Usuários de teste de campo e docentes acompanham o incremento, fornecendo feedback contínuo nas Reviews.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <h2 class="section-title">Timebox & Agenda</h2>
+      <p class="section-subtitle">Sprint com 10 dias úteis (24/10/2025 a 06/11/2025), balanceando cerimônias, dailies e sessões de refinement para garantir fluxo estável entre firmware e mobile.</p>
+      <div class="cards-grid">
+        <article class="card">
+          <h3>Timeboxes-chave</h3>
+          <ul class="list-pill">
+            <li><strong>Daily Scrum:</strong> 15 min às 09:30, registro de impedimentos e próximos passos.</li>
+            <li><strong>Planning Poker:</strong> 60 min no Dia 0 para estimativas e capacidade.</li>
+            <li><strong>Sprint Review:</strong> 90 min (Dia 9) com demonstração do fluxo Veri.</li>
+            <li><strong>Retrospective:</strong> 60 min (Dia 10) focada em sincronização firmware ↔ mobile.</li>
+            <li><strong>Refinement:</strong> terças e quintas, 30 min cada.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Cronograma</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h4>Dia 0 • Sprint Planning</h4>
+              <p>Definição da meta, ajustes de capacidade (44 pts) e alinhamento das dependências.</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Dias 1–9 • Execução</h4>
+              <p>Dailies, integração contínua, testes de latência, desenvolvimento do site e dashboard.</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Dia 9 • Sprint Review</h4>
+              <p>Apresentação do streaming SPP, UI de métricas, site Veri e logomarca aos stakeholders.</p>
+            </div>
+            <div class="timeline-item">
+              <h4>Dia 10 • Retrospective</h4>
+              <p>Levantamento de melhorias, ações para Sprint 3 e planejamento de integrações BLE avançadas.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="backlog">
+      <h2 class="section-title">Backlog da Sprint (MoSCoW + Fibonacci)</h2>
+      <p class="section-subtitle">Capacidade de 44 pontos distribuída em 12 itens priorizados por valor e dependências. Use os filtros abaixo para navegar pelas prioridades.</p>
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="must">Must (31 pts)</button>
+        <button class="filter-btn" data-filter="should">Should (11 pts)</button>
+        <button class="filter-btn" data-filter="could">Could (4 pts)</button>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>História</th>
+              <th>Tarefa</th>
+              <th>Pontos</th>
+              <th>MoSCoW</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="backlogTable">
+            <tr data-moscow="must">
+              <td>S1-T1</td>
+              <td>Operador</td>
+              <td>Implementar handshake e conexão SPP no ESP32-CAM com autenticação básica</td>
+              <td>5</td>
+              <td><span class="badge must">Must</span></td>
+              <td>A fazer</td>
+            </tr>
+            <tr data-moscow="must">
+              <td>S1-T2</td>
+              <td>Operador</td>
+              <td>Ajustar captura QQVGA/alta compressão e pipeline de envio para manter ≤ 2 s</td>
+              <td>8</td>
+              <td><span class="badge must">Must</span></td>
+              <td>A fazer</td>
+            </tr>
+            <tr data-moscow="should">
+              <td>S1-T3</td>
+              <td>Operador</td>
+              <td>Implementar reconexão automática com backoff exponencial</td>
+              <td>3</td>
+              <td><span class="badge should">Should</span></td>
+              <td>A fazer</td>
+            </tr>
+            <tr data-moscow="must">
+              <td>S1-T4</td>
+              <td>Operador</td>
+              <td>Medir latência ponta-a-ponta e documentar tuning</td>
+              <td>3</td>
+              <td><span class="badge must">Must</span></td>
+              <td>A fazer</td>
+            </tr>
+            <tr data-moscow="must">
+              <td>S2-T1</td>
+              <td>Dev Mobile</td>
+              <td>Implementar parser de header + CRC16 no app e firmware</td>
+              <td>5</td>
+              <td><span class="badge must">Must</span></td>
+              <td>A fazer</td>
+            </tr>
+            <tr data-moscow="must">
+              <td>S2-T2</td>
+              <td>Dev Mobile</td>
+              <td>Tratar frames corrompidos com reenvio e proteção de UI</td>
+              <td>3</td>
+              <td><span class="badge must">Must</span></td>
+              <td>A fazer</td>
+            </tr>
+            <tr data-moscow="should">
+              <td>S2-T3</td>
+              <td>Dev Mobile</td>
+              <td>Criar teste de estresse de 5 min monitorando perdas</td>
+              <td>2</td>
+              <td><span class="badge should">Should</span></td>
+              <td>A fazer</td>
+            </tr>
+            <tr data-moscow="could">
+              <td>S2-T4</td>
+              <td>Dev Mobile</td>
+              <td>Documentar protocolo de transmissão para integração futura</td>
+              <td>2</td>
+              <td><span class="badge could">Could</span></td>
+              <td>A fazer</td>
+            </tr>
+            <tr data-moscow="must">
+              <td>S3-T1</td>
+              <td>Analista</td>
+              <td>Desenvolver UI com sliders de ROI (≥ 25%) e intervalo (0,2–2 s)</td>
+              <td>5</td>
+              <td><span class="badge must">Must</span></td>
+              <td>A fazer</td>
+            </tr>
+            <tr data-moscow="must">
+              <td>S3-T2</td>
+              <td>Analista</td>
+              <td>Implementar comandos de ajuste no ESP32 e confirmação de recebimento</td>
+              <td>3</td>
+              <td><span class="badge must">Must</span></td>
+              <td>A fazer</td>
+            </tr>
+            <tr data-moscow="should">
+              <td>S3-T3</td>
+              <td>Analista</td>
+              <td>Registrar métricas de throughput e configurações em log estruturado</td>
+              <td>3</td>
+              <td><span class="badge should">Should</span></td>
+              <td>A fazer</td>
+            </tr>
+            <tr data-moscow="could">
+              <td>S3-T4</td>
+              <td>Analista</td>
+              <td>Criar painel no app exibindo últimas métricas e estado</td>
+              <td>2</td>
+              <td><span class="badge could">Could</span></td>
+              <td>A fazer</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="stories">
+      <h2 class="section-title">Histórias de Usuário & Requisitos de Aceitação</h2>
+      <p class="section-subtitle">Cada história evidencia uma perspectiva crítica para o sucesso da sprint. Expanda para conferir critérios já alinhados com o PO.</p>
+      <div class="accordion">
+        <details open>
+          <summary>HU1 — Como operador, quero iniciar o streaming Bluetooth e receber descrições ≤ 2 s.</summary>
+          <div class="story-meta">
+            <span class="tag">Valor: Operação</span>
+            <span>Pontos Must: 19 (S1-T1 a S1-T4)</span>
+          </div>
+          <ol class="story-criteria">
+            <li>Conexão Bluetooth SPP estabelecida em menos de 5 segundos.</li>
+            <li>Latência entre captura e descrição ≤ 2 segundos para resolução QQVGA.</li>
+            <li>Sistema reconecta automaticamente em até 10 segundos após qualquer queda.</li>
+          </ol>
+        </details>
+        <details>
+          <summary>HU2 — Como desenvolvedor mobile, quero receber frames comprimidos confiáveis.</summary>
+          <div class="story-meta">
+            <span class="tag">Valor: Mobile</span>
+            <span>Pontos Must: 10 + Should 4</span>
+          </div>
+          <ol class="story-criteria">
+            <li>Cada frame chega com header contendo tamanho (4 bytes little-endian) e checksum CRC16.</li>
+            <li>Taxa de perdas inferior a 2% em teste contínuo de 5 minutos.</li>
+            <li>Aplicativo rejeita frames corrompidos, solicita reenvio e mantém a UI responsiva.</li>
+          </ol>
+        </details>
+        <details>
+          <summary>HU3 — Como analista de produto, quero ajustar ROI e frequência de captura.</summary>
+          <div class="story-meta">
+            <span class="tag">Valor: Produto</span>
+            <span>Pontos Must: 8 + Should 3 + Could 2</span>
+          </div>
+          <ol class="story-criteria">
+            <li>Interface com sliders para ROI (mínimo 25% do frame) e intervalo (0,2 a 2 s).</li>
+            <li>Alterações efetivas até o próximo frame enviado.</li>
+            <li>Logs exibem configuração ativa e métricas de throughput em tempo real.</li>
+          </ol>
+        </details>
+      </div>
+    </section>
+
+    <section id="kanban">
+      <h2 class="section-title">Quadro Kanban & Fluxo de Trabalho</h2>
+      <p class="section-subtitle">Limite de WIP em 4 itens para sustentar ritmo previsível. Checklist de revisão inclui evidências de testes e logs anexados.</p>
+      <div class="kanban-grid">
+        <div class="kanban-column">
+          <h4>To Do</h4>
+          <div class="kanban-items">
+            <span>S1-T1 · S1-T2 · S1-T3 · S1-T4</span>
+            <span>S2-T1 · S2-T2 · S2-T3 · S2-T4</span>
+            <span>S3-T1 · S3-T2 · S3-T3 · S3-T4</span>
+            <small>Prioridade guiada pelo MoSCoW e dependências firmware ↔ mobile.</small>
+          </div>
+        </div>
+        <div class="kanban-column">
+          <h4>In Progress</h4>
+          <div class="kanban-items">
+            <span>Atualizado diariamente após as dailies.</span>
+            <small>Limite WIP: 4 tarefas — foco em integrações críticas.</small>
+          </div>
+        </div>
+        <div class="kanban-column">
+          <h4>Review</h4>
+          <div class="kanban-items">
+            <span>Itens aguardando validação do PO.</span>
+            <small>Checklist: evidências de testes, logs e documentação anexados.</small>
+          </div>
+        </div>
+        <div class="kanban-column">
+          <h4>Done</h4>
+          <div class="kanban-items">
+            <span>Itens aceitos são incorporados ao repositório principal.</span>
+            <small>BurnDown atualizado imediatamente por Suel.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="metrics">
+      <h2 class="section-title">Métricas & BurnDown Chart</h2>
+      <p class="section-subtitle">Monitore progresso diário, variação frente ao ideal e anotações importantes para tomada de decisão rápida.</p>
+      <div class="chart-card">
+        <canvas id="burndownChart" width="960" height="360">Seu navegador não suporta o elemento canvas.</canvas>
+        <div class="chart-legend">
+          <div class="legend-item"><span class="legend-dot" style="background: var(--accent);"></span> Ideal</div>
+          <div class="legend-item"><span class="legend-dot" style="background: var(--danger);"></span> Atual</div>
+        </div>
+      </div>
+      <div class="table-wrapper" style="margin-top:1.5rem;">
+        <table>
+          <thead>
+            <tr>
+              <th>Dia útil</th>
+              <th>Ideal restante (pts)</th>
+              <th>Atual restante (pts)</th>
+              <th>Comentário</th>
+            </tr>
+          </thead>
+          <tbody id="burndownTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="definitions">
+      <h2 class="section-title">Definition of Done & Definition of Ready</h2>
+      <div class="grid-two">
+        <article class="card">
+          <span class="tag">DoD</span>
+          <ul class="list-pill">
+            <li>PR revisada por pelo menos um par com cobertura dos cenários críticos.</li>
+            <li>Builds (firmware binário e APK) publicados com instruções de instalação.</li>
+            <li>Testes manuais documentados para latência, reconexão e ajuste de ROI.</li>
+            <li>Logs, relatórios e documentação (`docs/`) atualizados e anexados às PRs.</li>
+            <li>Dashboard BurnDown sincronizado com progresso real e Review realizada.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag">DoR</span>
+          <ul class="list-pill">
+            <li>História priorizada pelo PO com critérios de aceitação claros.</li>
+            <li>Dependências externas mapeadas (hardware, dispositivos, assets).</li>
+            <li>Estimativa por Planning Poker concluída e capacidade validada.</li>
+            <li>Artefatos de entrada prontos (modelo TFLite, scripts, logotipos).</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="increment">
+      <h2 class="section-title">Incremento da Sprint</h2>
+      <p class="section-subtitle">Integração dos componentes essenciais para validar o fluxo Veri em cenários reais.</p>
+      <div class="grid-three">
+        <article class="card">
+          <h3>Firmware ESP32-CAM</h3>
+          <p>Handshake SPP seguro, captura QQVGA otimizada, compressão ajustável, reconexão automática e aplicação de comandos de ROI/intervalo em tempo real.</p>
+        </article>
+        <article class="card">
+          <h3>Aplicativo Android</h3>
+          <p>Parser de headers + CRC16, tratamento de frames corrompidos, sliders de ROI/intervalo, painel de métricas e logging estruturado para análise.</p>
+        </article>
+        <article class="card">
+          <h3>Branding & Documentação</h3>
+          <p>Nome Veri validado, logomarca inicial, site informativo, protocolos de transmissão e guias iOS/Android atualizados em `docs/`.</p>
+        </article>
+        <article class="card">
+          <h3>Fluxo iOS (planejamento)</h3>
+          <p>Plano detalhado para integração BLE com Core ML, incluindo conversão de modelo e ajustes de MTU para manter latência ≤ 2 s.</p>
+        </article>
+        <article class="card">
+          <h3>Dashboard & Métricas</h3>
+          <p>BurnDown Chart diário, logs estruturados e painel auxiliar no app para monitoramento de throughput e configurações.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <h2 class="section-title">Checklist de Requisitos de Aceitação</h2>
+      <div class="grid-two">
+        <article class="card">
+          <ul class="list-pill">
+            <li><strong>Latência:</strong> medições ≤ 2 s com relatórios anexados; exceções com plano de ação.</li>
+            <li><strong>Conectividade:</strong> logs provando conexão < 5 s e reconexão < 10 s.</li>
+            <li><strong>Integridade:</strong> testes de CRC16 e script de estresse com perdas < 2%.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <ul class="list-pill">
+            <li><strong>Configurações remotas:</strong> comandos de ROI/intervalo confirmados via serial e UI.</li>
+            <li><strong>Experiência final:</strong> descrições entregues com consistência na Sprint Review.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="resources">
+      <h2 class="section-title">Ferramentas, Repositórios & Comunicação</h2>
+      <div class="grid-two">
+        <article class="card">
+          <h3>Artefatos principais</h3>
+          <ul class="list-pill">
+            <li><code>firmware/esp32cam_bt_stream.ino</code> e <code>firmware/esp32cam_ble_stream.ino</code></li>
+            <li><code>mobile/app/src/...</code> com <code>BluetoothStreamClient</code> e assets TFLite</li>
+            <li><code>ios/VeriBLE/</code> (SwiftUI, scripts de conversão Core ML)</li>
+            <li><code>docs/operator_story_setup.md</code> e <code>docs/operator_story_ios.md</code></li>
+            <li><code>delivery_plan.md</code>, <code>sprint2.md</code>, <code>SPRINT2_REAL.MD</code></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Comunicação & Transparência</h3>
+          <ul class="list-pill">
+            <li>Grupo WhatsApp/SENAC (mensagens de 23/10/25) para alinhamento imediato.</li>
+            <li>Atualização diária do quadro Kanban e BurnDown antes das 11h30.</li>
+            <li>Compartilhamento de vídeos/demo nas PRs e durante a Sprint Review.</li>
+            <li>Feedback dos stakeholders registrado em ata e convertido em backlog futuro.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="next">
+      <h2 class="section-title">Próximos Passos Pós-Sprint</h2>
+      <div class="cards-grid">
+        <article class="card">
+          <h3>Integração BLE Avançada</h3>
+          <p>Planejar iteração para otimizar throughput BLE no iOS após validação do fluxo Android.</p>
+        </article>
+        <article class="card">
+          <h3>Novos Sensores</h3>
+          <p>Priorizar suporte a sensores adicionais e integração com serviços de voz na Sprint 3.</p>
+        </article>
+        <article class="card">
+          <h3>Site Veri</h3>
+          <p>Expandir conteúdo de marketing, depoimentos e materiais visuais após obter métricas de campo.</p>
+        </article>
+        <article class="card">
+          <h3>Testes com Usuários</h3>
+          <p>Organizar sessões com usuários com deficiência visual para avaliar autonomia real em ambientes diversos.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div>
+        <h3>Pronto para revisar o progresso da Sprint 2?</h3>
+        <p>Use este dossiê visual para conduzir dailies, review ou apresentação executiva. Os dados estão sincronizados com o arquivo <code>SPRINT2_REAL.MD</code>.</p>
+      </div>
+      <button id="downloadBtn">Baixar PDF</button>
+    </section>
+  </main>
+
+  <footer>
+    Veri — Sprint 2 • Documento vivo atualizado em 24/10/2025. Construído com ❤ pela equipe SENAC ADS.
+  </footer>
+
+  <button class="to-top" id="toTopBtn" aria-label="Voltar ao topo">↑</button>
+
+  <script>
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const backlogRows = document.querySelectorAll("#backlogTable tr");
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const filter = btn.dataset.filter;
+
+        backlogRows.forEach((row) => {
+          const rowFilter = row.dataset.moscow;
+          row.style.display = (filter === "all" || filter === rowFilter) ? "" : "none";
+        });
+      });
+    });
+
+    const burndownData = [
+      { day: 0, ideal: 44, actual: 44, comment: "Linha base pós-planning." },
+      { day: 1, ideal: 40, actual: 42, comment: "Ajustes iniciais no firmware ainda em progresso." },
+      { day: 2, ideal: 36, actual: 39, comment: "Dependências entre parser CRC e firmware mapeadas." },
+      { day: 3, ideal: 31, actual: 34, comment: "Primeiros testes de latência mostram necessidade de tuning." },
+      { day: 4, ideal: 27, actual: 29, comment: "Reconexão automatizada pronta para validação." },
+      { day: 5, ideal: 22, actual: 26, comment: "Pico de esforço em testes de estresse mobile." },
+      { day: 6, ideal: 18, actual: 20, comment: "UI de ROI disponível em build interno." },
+      { day: 7, ideal: 13, actual: 14, comment: "Ajustes de logs estruturados e painel parcial." },
+      { day: 8, ideal: 9, actual: 10, comment: "Site Veri e branding integrados ao material de review." },
+      { day: 9, ideal: 4, actual: 5, comment: "Preparação para Review, finalização de documentação." },
+      { day: 10, ideal: 0, actual: 0, comment: "Incremento aprovado na Review." }
+    ];
+
+    const tableBody = document.getElementById("burndownTable");
+    burndownData.forEach((item) => {
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${item.day}</td>
+        <td>${item.ideal}</td>
+        <td>${item.actual}</td>
+        <td>${item.comment}</td>
+      `;
+      tableBody.appendChild(tr);
+    });
+
+    function renderBurndownChart() {
+      const canvas = document.getElementById("burndownChart");
+      const ctx = canvas.getContext("2d");
+      const padding = 50;
+      const width = canvas.width;
+      const height = canvas.height;
+      const maxPoints = Math.max(...burndownData.map(d => Math.max(d.ideal, d.actual)));
+      const maxDay = Math.max(...burndownData.map(d => d.day));
+
+      ctx.clearRect(0, 0, width, height);
+
+      // Background grid
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
+      ctx.lineWidth = 1;
+      const horizontalLines = 5;
+      for (let i = 0; i <= horizontalLines; i++) {
+        const y = padding + ((height - padding * 2) / horizontalLines) * i;
+        ctx.beginPath();
+        ctx.moveTo(padding, y);
+        ctx.lineTo(width - padding, y);
+        ctx.stroke();
+      }
+
+      // Axes
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.2)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(padding, padding);
+      ctx.lineTo(padding, height - padding);
+      ctx.lineTo(width - padding, height - padding);
+      ctx.stroke();
+
+      // Axis labels
+      ctx.fillStyle = "rgba(203, 213, 225, 0.9)";
+      ctx.font = "14px Inter, sans-serif";
+      ctx.fillText("Pontos restantes", padding, padding - 15);
+      ctx.fillText("Dias", width - padding - 30, height - padding + 30);
+
+      // Helper function to map data to canvas coordinates
+      const mapX = (day) => padding + (day / maxDay) * (width - padding * 2);
+      const mapY = (points) => height - padding - (points / maxPoints) * (height - padding * 2);
+
+      // Draw lines
+      function drawLine(color, property) {
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        burndownData.forEach((item, index) => {
+          const x = mapX(item.day);
+          const y = mapY(item[property]);
+          if (index === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            ctx.lineTo(x, y);
+          }
+        });
+        ctx.stroke();
+
+        // Draw points
+        ctx.fillStyle = color;
+        burndownData.forEach((item) => {
+          const x = mapX(item.day);
+          const y = mapY(item[property]);
+          ctx.beginPath();
+          ctx.arc(x, y, 5, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+
+      drawLine("#06b6d4", "ideal");
+      drawLine("#f87171", "actual");
+    }
+
+    renderBurndownChart();
+
+    window.addEventListener("resize", () => {
+      const canvas = document.getElementById("burndownChart");
+      const ratio = window.devicePixelRatio || 1;
+      canvas.width = canvas.clientWidth * ratio;
+      canvas.height = 360 * ratio;
+      renderBurndownChart();
+    });
+
+    const toTopBtn = document.getElementById("toTopBtn");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        toTopBtn.classList.add("visible");
+      } else {
+        toTopBtn.classList.remove("visible");
+      }
+    });
+
+    toTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    document.getElementById("downloadBtn").addEventListener("click", () => {
+      alert("Para gerar um PDF, utilize a opção de imprimir do navegador (Ctrl+P ou Cmd+P) e escolha 'Salvar como PDF'.");
+    });
+  </script>
+</body>
+</html>
